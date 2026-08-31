@@ -1,0 +1,21 @@
+name: Sudoku CI
+
+on:
+    push:
+        branches: 
+            - main
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository 
+              uses: actions/checkout@v4
+            
+            - name: Compile
+              run: g++ -std=c++17 src/main.cpp -o main.exe
+
+            - name: Run
+              run: ./main.exe
